@@ -241,5 +241,7 @@ Prometheus-3.5.0.
  
 Grafana-12.2.0-1
 
+Red Hat Entreprise Linux Workstation 7.9 (maipo) 
+
 
 
