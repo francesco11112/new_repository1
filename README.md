@@ -1,4 +1,4 @@
-# Monitoring with Prometheus and Grafana
+# Monitoring Historian via Solr with Prometheus and Grafana
 If you use Prometheus and Grafana for metrics storage and data visualization, Solr provides 2 solutions to collect metrics and other data:
 
  - Prometheus Exporter
@@ -26,7 +26,7 @@ There are three aspects to running solr-exporter:
 You can start `solr-exporter` by running `./bin/solr-exporter` (Linux) or `.\bin\solr-exporter.cmd` (Windows) from the `prometheus-exporter/` directory.
 The metrics exposed by `solr-exporter` can be seen at the metrics endpoint: http://localhost:8983/solr/admin/metrics.
 
-See the commands below depending on your operating system and Solr operating mode: Only Linux is shown here
+See the commands below depending on your operating system and Solr operating mode: Only Linux is shown here.
 
 ### Linux
 
@@ -67,7 +67,7 @@ You can test that the Prometheus server, `solr-exporter`, and Solr are working 
 
 ## Sample Grafana Dashboard
 
-To use Grafana for visualization, it must be downloaded and deployed separately. More information can be found on the Grafana [Documentation] (https://grafana.com/docs/grafana/latest/) site.
+To use Grafana for visualization, it must be downloaded and deployed separately. More information can be found on the Grafana [Documentation](https://grafana.com/docs/grafana/latest/) site.
 
 A Grafana sample dashboard is provided in the following JSON file: `prometheus-exporter/conf/grafana-solr-dashboard.json`. You can place this with your other Grafana dashboard configurations and modify it as necessary depending on any customization you’ve done for the `solr-exporter` configuration.
 
@@ -83,7 +83,7 @@ You can directly import the Solr dashboard [via grafana.com](https://grafana.co
 # An Implimentation
 
 In this tutorial we will give a practical example of running the `solr-exporter` in a SolrCloud cluster.  
-We will use a three node SolrCloud cluster with a Data Historian Collection and a Zookeeper ensemble (of three) and push metrics to Prometheus using the `solr-exporter`. Finally we will visualize the operating system metrics pulled by Prometheus, listening on http://localhost:9090 and the `solr-exporter` metrics listening on http://localhost:9854 via Grafana using some prebuilt dashboards. The three cluster nodes have the following hostnames and IP addresses: hdpv1: 192.168.1.40, hdpv2:192.168.1.41, hdpv3:192.168.1.42.
+We will use a three node SolrCloud cluster with a Historian Collection and a Zookeeper ensemble (of three) and pull metrics from `solr-exporter` using Prometheus. Finally we will visualize the operating system and network metrics pulled by Prometheus, listening on http://localhost:9090 and the `solr-exporter` metrics listening on http://localhost:9854 , via Grafana using some prebuilt dashboards. The three cluster nodes have the following hostnames and IP addresses: hdpv1: 192.168.1.40, hdpv2:192.168.1.41, hdpv3:192.168.1.42.
 
 ## Zookeeper
 
@@ -149,7 +149,7 @@ Here is a screenshot of SolrCloud monitoring the cluster nodes.
 
 ## Historian
 
-Next start Data Historian on one or all three nodes.
+Next start Historian on one or all three nodes.
 
 ```bash
 
@@ -172,7 +172,7 @@ Start the Prometheus server on all three nodes listening on http://localhost:909
 ```
 ## Solr-exporter
 
-Start the Prometheus server on all three nodes listening on http://localhost:9854.
+Start the Solr-exporter on all three nodes listening on http://localhost:9854.
 
 ```bash
 #  cd /opt/solr/solr-8.11.4/contrib/prometheus-exporter
@@ -180,7 +180,7 @@ Start the Prometheus server on all three nodes listening on http://localhost:985
 [root@hdpv2 prometheus-exporter]# ./bin/solr-exporter -p 9854 -z '192.168.1.40:2181,192.168.1.41:2181,192.168.1.42:2181' --config-file ./conf/solr-exporter-config.xml --num-threads 16
 [root@hdpv3 prometheus-exporter]# ./bin/solr-exporter -p 9854 -z '192.168.1.40:2181,192.168.1.41:2181,192.168.1.42:2181' --config-file ./conf/solr-exporter-config.xml --num-threads 16
 ```
-We can now go to our web browser on http://localhost:9090 and connect to the Prometheus GUI.
+Go to the web browser on http://localhost:9090 and connect to the Prometheus GUI.
 
 We can see from the Status Toolbar our two targets 'prometheus' and 'solr'.
 
@@ -205,9 +205,9 @@ Finally start Grafana on one or all three nodes.
 # systemctl start grafana-server
 # systemctl status grafana-server
 ```
-Go to our web browser on http://localhost:3000 and connect to Grafana using user 'admin' and password 'admin'.
+Go to the web browser on http://localhost:3000 and connect to Grafana using user 'admin' and password 'admin'.
 
-For the 'prometheus' metrics we directly imported the Prometheus dashboard  [via grafana.com](https://grafana.com/grafana/dashboards/12456-solr-dashboard/) using the dashboard id  . This is shown using the prometheus-1 Data source. Here are three screenshots:
+For the 'prometheus' metrics we click on the Toolbars - Home - Drilldown - Metrics - All Metrics. This is shown using the prometheus-1 Data source. Here are three screenshots:
 
 <img width="1280" height="1024" alt="snapshot1Nov18" src="https://github.com/user-attachments/assets/2e3097d5-455a-494d-80d6-ea855fd64d93" />
 
@@ -215,13 +215,13 @@ For the 'prometheus' metrics we directly imported the Prometheus dashboard  [vi
 
 <img width="1280" height="1024" alt="snapshot8Nov18" src="https://github.com/user-attachments/assets/01ddc346-f096-4d52-aed0-4b4f67a0cff6" />
 
-Whilst for the 'solr' metrics we imported the Solr dashboard using the dashboard id 12456. This is using the 'Default' prometheus Data source.  The metrics are shown the Historian Collection. Here are three screenshots:
+Whilst for the 'solr' metrics we imported the Solr dashboard [via grafana.com](https://grafana.com/grafana/dashboards/12456-solr-dashboard/) using the dashboard id 12456. This is using the 'Default' prometheus Data source. The metrics are shown for the Historian Collection. Here are three screenshots:
 
 JVM metrics
 
 <img width="1280" height="1024" alt="snapshot2Nov23" src="https://github.com/user-attachments/assets/d379e730-99a5-4ebc-83f3-a66f9d495b07" />
 
-Request metrics
+Jetty metrics
 
 <img width="1280" height="1024" alt="snapshot2Nov22" src="https://github.com/user-attachments/assets/19b128f5-f3a2-4852-9506-2a8f401ff81a" />
 
@@ -229,6 +229,17 @@ Core metrics
 
 <img width="1280" height="1024" alt="snapshot2Nov19" src="https://github.com/user-attachments/assets/2cc69a96-f907-4a58-a6d9-a37cfda9a588" />
 
+The Technical Environnement is:
+
+Apache-Zookeeper-3.8.4
+
+Apache-Solr-8.11.4 
+
+Hurence-Historian-1.3.9
+
+Prometheus-3.5.0.
+ 
+Grafana-12.2.0-1
 
 
 
