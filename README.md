@@ -135,17 +135,15 @@ Go to the web browser on http://localhost:8983 and connect to Solr.
 
 Here is a screenshot of SolrCloud in graph mode.
 
-<img width="1680" height="1050" alt="snapshot8June15" src="https://github.com/user-attachments/assets/d50cd6e2-9e32-4622-9c73-379956d6bd28" />
-
+<img width="1680" height="1050" alt="snapshot8June15" src="https://github.com/user-attachments/assets/f5e814de-b9f1-4121-a334-dfd0ee6a7655" />
 
 Here is a screenshot of SolrCloud monitoring the Zookeeper ensemble.
 
-<img width="1280" height="1024" alt="snapshot4" src="https://github.com/user-attachments/assets/7b78af67-5b3e-4b97-a2ba-64050d814939" />
-
+<img width="1280" height="1024" alt="snapshot4" src="https://github.com/user-attachments/assets/941913d7-3a78-4060-bcc6-6610a4b806e8" />
 
 Here is a screenshot of SolrCloud monitoring the cluster nodes.
 
-<img width="1280" height="1024" alt="snapshot6" src="https://github.com/user-attachments/assets/7beca442-66b5-48c4-ae98-d2f3933150cc" />
+<img width="1280" height="1024" alt="snapshot6" src="https://github.com/user-attachments/assets/47d60081-675d-42df-8a70-f85e78c29d29" />
 
 ## Historian
 
@@ -184,17 +182,18 @@ Go to the web browser on http://localhost:9090 and connect to the Prometheus GUI
 
 We can see from the Status Toolbar our two targets 'prometheus' and 'solr'.
 
-<img width="1280" height="1024" alt="snapshot2Nov32" src="https://github.com/user-attachments/assets/e42ac92b-9bbe-48d0-aa91-c0819757e3f8" />
+<img width="1280" height="1024" alt="snapshot2Nov32" src="https://github.com/user-attachments/assets/19362e39-bd32-472b-ae36-7d2c8a97079f" />
+
 
 By clicking on the Endpoint link for these two targets we can get a detailed view of the metrics being scraped.
 
 Here is the target 'prometheus'.
 
-<img width="1280" height="1024" alt="snapshot2Nov33" src="https://github.com/user-attachments/assets/e7940963-ee76-4da2-8952-673768554752" />
+<img width="1280" height="1024" alt="snapshot2Nov33" src="https://github.com/user-attachments/assets/aaa722b0-b0e2-4c39-ab32-b781027f0736" />
 
 Here is the target 'solr'.
 
-<img width="1280" height="1024" alt="snapshot2Nov34" src="https://github.com/user-attachments/assets/147e44db-992f-4c1d-914f-3feb289f0f56" />
+<img width="1280" height="1024" alt="snapshot2Nov34" src="https://github.com/user-attachments/assets/4fb2e151-67c9-4852-8493-829199deac8b" />
 
 ## Grafana
 
@@ -209,25 +208,26 @@ Go to the web browser on http://localhost:3000 and connect to Grafana using user
 
 For the 'prometheus' metrics we click on the Toolbars - Home - Drilldown - Metrics - All Metrics. This is shown using the prometheus-1 Data source. Here are three screenshots:
 
-<img width="1280" height="1024" alt="snapshot1Nov18" src="https://github.com/user-attachments/assets/2e3097d5-455a-494d-80d6-ea855fd64d93" />
+<img width="1280" height="1024" alt="snapshot1Nov18" src="https://github.com/user-attachments/assets/7880972b-a762-4a69-9771-cb31c130de5a" />
 
-<img width="1280" height="1024" alt="snapshot14Nov18" src="https://github.com/user-attachments/assets/66c6c7d7-679f-45f6-9ae4-01f7daf0e676" />
+<img width="1280" height="1024" alt="snapshot14Nov18" src="https://github.com/user-attachments/assets/3cb69f82-3c37-47a4-9355-8e146bab1df2" />
 
-<img width="1280" height="1024" alt="snapshot8Nov18" src="https://github.com/user-attachments/assets/01ddc346-f096-4d52-aed0-4b4f67a0cff6" />
+<img width="1280" height="1024" alt="snapshot8Nov18" src="https://github.com/user-attachments/assets/49246517-4ce2-4637-8a89-849496e7e281" />
 
 Whilst for the 'solr' metrics we imported the Solr dashboard [via grafana.com](https://grafana.com/grafana/dashboards/12456-solr-dashboard/) using the dashboard id 12456. This is using the 'Default' prometheus Data source. The metrics are shown for the Historian Collection. Here are three screenshots:
 
 JVM metrics
 
-<img width="1280" height="1024" alt="snapshot2Nov23" src="https://github.com/user-attachments/assets/d379e730-99a5-4ebc-83f3-a66f9d495b07" />
+<img width="1280" height="1024" alt="snapshot2Nov23" src="https://github.com/user-attachments/assets/051ad2c6-58ab-4a0c-8255-4f4001e7fd73" />
 
 Jetty metrics
 
-<img width="1280" height="1024" alt="snapshot2Nov22" src="https://github.com/user-attachments/assets/19b128f5-f3a2-4852-9506-2a8f401ff81a" />
+<img width="1280" height="1024" alt="snapshot2Nov22" src="https://github.com/user-attachments/assets/fe7177f8-8873-4f99-9d82-bc7478c9212c" />
 
 Core metrics
 
-<img width="1280" height="1024" alt="snapshot2Nov19" src="https://github.com/user-attachments/assets/2cc69a96-f907-4a58-a6d9-a37cfda9a588" />
+<img width="1280" height="1024" alt="snapshot2Nov19" src="https://github.com/user-attachments/assets/5ffca323-9461-4ad5-93a3-47b1ed9e9deb" />
+
 
 The Technical Environnement is:
 
